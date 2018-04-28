@@ -272,40 +272,29 @@ int main()
 /*
 8. Faça um programa que some os números primos existentes entre a e b, onde a e b são
 números informados pelo usuário.
+*/
 
-
-#include <iostream>
+#include <stdio.h>
 #include <stdlib.h>
 using namespace std;
 
-int main()
-{
-  int div = 2, a, b, soma = 0, i;
+int main() {
 
-  cout << "informe o inicio e o fim do intervalo:\n ";
-  cin >> a >> b;
+  int div = 2 , n;
 
+  cin >> n;
 
-   //cin >> a;
+  while ((div < n/2) && (n%div!=0)){
+    div++;
+  }
 
-   i = a;
-   while ( (i % div != 0 ) && (div < i /2 ))
-   {
-     div ++;
-   }
-
-
-
-   if ( i % div == 0)
-      soma = soma;
-
-
-   cout << "\n\n\n\n\n" << soma << endl;
-
+  if (n%div == 0)
+    cout << "primo";
+  else
+  cout << "n primo";
 }
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~
-*/
+
 
 //9
 /*
@@ -382,4 +371,193 @@ int main()
 /*10. Escreva um programa que receba como entrada o valor do saque realizado pelo cliente
 de um banco e retorne quantas notas de cada valor serão necessárias para atender ao
 saque com a menor quantidade de notas possível. Serão utilizadas notas de 100, 50,
-20, 10, 5, 2 e 1 real.*
+20, 10, 5, 2 e 1 real.*/
+/*
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+  int saque, iC = 0, resto;
+
+  cout << "Informe o valor do saque";
+  cin >> saque;
+
+  while (saque != 0)
+  {
+    if (saque > 100)
+    {
+    resto = saque / 100;
+    saque = resto;
+    iC ++;
+    }
+  }
+
+  cout << iC;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
