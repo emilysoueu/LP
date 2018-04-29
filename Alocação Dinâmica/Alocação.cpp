@@ -157,30 +157,25 @@ imprima o vetor lido.*/
 using namespace std;
 
 int main (){
-  int numeros[5];
-  int n;
-  int i=0;
+    int num, tam = 0;
+    int i;
+    int numeros[100];
 
-  while (i>=0){
-    cout << "Informe valores: ";
-    cin >> numeros[i];
-    i++;
-    if (i<0)
-    break;
-  }
 
-  for(i=0; i<5; i++){
-    cout << numeros[i];
-  }
+    while (num >= 0){
+        cout << "Informe valores: ";
+        cin >> num;
+        tam ++; // tamanho do vetor, conforme o usuário informa valores positivos o vetor vai sendo preenchido;
+        numeros[tam] = num; // o vetor numeros tem o tamanho da quantidade de numeros positivos informados pelo usuário;
+    }
+
+    for (i=numeros[1]; i<tam; i++){ // i iniciliza com a segunda posição do vetor, a que a primeira é zero;
+        if (numeros[i] >= 0) {
+        cout << numeros[i]<<endl;
+        }
+    }
 }
-
- */
-
-
-
-
-/////////////////////////////////////////////////
-
+*/
 /*5. Faça um programa que pergunte ao usuário quantos valores ele deseja armazenar em
 um vetor de double. Esse vetor deve ter um tamanho maior
 ou igual a 10 elementos. Use este vetor dinâmico como um vetor comum, atribuindo aos 10
