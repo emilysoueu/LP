@@ -224,6 +224,58 @@ alocado cada vez que o mesmo estiver cheio. Assim o vetor irá ser ’expandido�
 em 10 valores.
 Ao final, exiba o vetor lido.
 */
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main(){
+    int t = 10; //  tamanho original do vetor
+    int *vetor; // vetor
+    int n = 10;
+    int i, j,  k; // laço
+    int cont =0,  teste = 0; // contadores
+
+
+    vetor = new int[t];
+
+	while(k != 0){
+        for(i=0; i<t; i++){
+			cout<< "informe valores: ";
+			cin >> k;
+			vetor[i] = k;
+			cont++;
+			teste ++;
+			if (k==0) break;
+
+		}
+
+        if (teste > 10){
+            vetor = new int[n+t];
+            for(j=0; j<n+t;j++){
+                vetor[j] = vetor[i];
+            }
+
+            n = n + 10;
+            teste = 0;// a cada nova expansão o vetor aumenta mais 10.
+        }
+	}
+
+
+    cout << "\n\nvetor: " << endl;
+    for (i=0; i<cont; i++){    // impressão do vetor
+        cout<< vetor[i] <<endl;
+    }
+
+
+
+}
+
+
+
+
+
+
 
 /* 7. Faça um programa que leia do usuário o tamanho de um vetor a ser lido e faç̧a a
 alocação dinâmica de memória. Em seguida, leia do usuário seus valores e imprima o vetor
