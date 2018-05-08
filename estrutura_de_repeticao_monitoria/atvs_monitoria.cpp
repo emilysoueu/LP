@@ -227,7 +227,7 @@ int main ()
   }
 
   cout << "soma dos pares = " << contPar << endl;
-  cout << "multiplicaÁ„o dos impares = " << multImp << endl;
+  cout << "multiplica√ß√£o dos impares = " << multImp << endl;
 }
 */
 
@@ -270,8 +270,8 @@ int main()
 
 //8
 /*
-8. FaÁa um programa que some os n˙meros primos existentes entre a e b, onde a e b s„o
-n˙meros informados pelo usu·rio.
+8. Fa√ßa um programa que some os n√∫meros primos existentes entre a e b, onde a e b s√£o
+n√∫meros informados pelo usu√°rio.
 
 
 #include <iostream>
@@ -280,37 +280,31 @@ using namespace std;
 
 int main()
 {
-  int div = 2, a, b, soma = 0, i;
+int ini, fim, i, j, div = 2, soma = 0;
 
-  cout << "informe o inicio e o fim do intervalo:\n ";
-  cin >> a >> b;
+cout << "Informe o inicio e o fim do intervalo: ";
+cin >> ini >> fim;
 
-
-   //cin >> a;
-
-   i = a;
-   while ( (i % div != 0 ) && (div < i /2 ))
-   {
-     div ++;
-   }
-
-
-
-   if ( i % div == 0)
-      soma = soma;
-
-
-   cout << "\n\n\n\n\n" << soma << endl;
-
+for (i = ini; i <= fim; i++){
+  
+  while ((div < i/2) && (i%div != 0)){
+    div++;
+    
+  }
+  if ((i%div != 0) && (i != 1) || (i == 2) ){
+    cout << i << endl;
+    soma = soma + i ;
+  }
+  }
+     
+cout << "RESULTADO=  " << soma;
 }
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~
 */
 
 //9
 /*
-9. Escreva um programa que leia um n˙mero inteiro positivo n e em seguida imprima n
-linhas do chamado Tri‚ngulo de Floyd.
+9. Escreva um programa que leia um n√∫mero inteiro positivo n e em seguida imprima n
+linhas do chamado Tri√¢ngulo de Floyd.
 */
 // uma maneira
 /*
@@ -349,7 +343,7 @@ void triangulo(int n)
   }
   */
 
-  // outra maneira mais f·cil
+  // outra maneira mais f√°cil
   /*
 #include <iostream>
 #include <stdlib.h>
@@ -380,6 +374,67 @@ int main()
 
 //10
 /*10. Escreva um programa que receba como entrada o valor do saque realizado pelo cliente
-de um banco e retorne quantas notas de cada valor ser„o necess·rias para atender ao
-saque com a menor quantidade de notas possÌvel. Ser„o utilizadas notas de 100, 50,
-20, 10, 5, 2 e 1 real.*
+de um banco e retorne quantas notas de cada valor ser√£o necess√°rias para atender ao
+saque com a menor quantidade de notas poss√≠vel. Ser√£o utilizadas notas de 100, 50,
+20, 10, 5, 2 e 1 real.*/
+/**
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main (){
+    int saque;
+    int resto = 0, cem = 0, cinq = 0, vinte=0, dez = 0, cinco = 0, dois = 0, um = 0;
+
+
+    cout << "Informe o valor do saque: ";
+    cin >> saque;
+
+    cem = saque/100;
+    resto = saque%100;
+
+    cinq = resto/ 50;
+    resto = resto %50;
+
+    vinte = resto/20;
+    resto = resto%20;
+
+    dez = resto/10;
+    resto = resto%10;
+
+    cinco = resto/5;
+    resto = resto%5;
+
+    dois = resto/2;
+    resto = resto%2;
+
+    um = resto;
+
+    cout << "A quantidade de notas utilizadas foi: " << endl;
+    if (cem > 0){
+    cout << "cem: " << cem << endl;
+    }
+     if (cinq > 0){
+    cout << "cinquenta: " << cinq << endl;
+     }
+     if (vinte > 0){
+    cout << "vinte: " << vinte << endl;
+     }
+     if (dez > 0){
+    cout << "dez: " << dez << endl;
+     }
+     if (cinco > 0){
+    cout << "cinco: "<< cinco << endl;
+     }
+     if (dois > 0){
+    cout << "dois: " <<  dois <<  endl;
+     }
+     if (um > 0){
+    cout << "um : " << um << endl;
+     }
+
+}
+*/
+
+
