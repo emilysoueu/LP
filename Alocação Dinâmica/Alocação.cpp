@@ -224,58 +224,156 @@ alocado cada vez que o mesmo estiver cheio. Assim o vetor irá ser ’expandido�
 em 10 valores.
 Ao final, exiba o vetor lido.
 */
+/*
 #include <iostream>
 #include <cstdlib>
 
 using namespace std;
 
 int main(){
-    int t = 10; //  tamanho original do vetor
-    int *vetor; // vetor
     int n = 10;
-    int i, j,  k; // laço
-    int cont =0,  teste = 0; // contadores
+    int *vetor;
+    int *novovetor;
+    int num;
+    int i, j;
+    int cont1 = 0, cont2 =0;
 
+    vetor = new int [n]; //alocando espaço para vetor
+    cout << "TAMANHO TOTAL DO VETOR "<< n<<endl;
 
-    vetor = new int[t];
+    cout << "Informe valores: "<<endl;
 
-	while(k != 0){
-        for(i=0; i<t; i++){
-			cout<< "informe valores: ";
-			cin >> k;
-			vetor[i] = k;
-			cont++;
-			teste ++;
-			if (k==0) break;
+    for (i=0; i<n; i++){
 
-		}
+            cin >> num;
+        if (num == 0) ///para a entrada (teste antes de inseriri no vetor)
+                    break;
+            vetor[i] = num; ///inserindo valores no vetor;
+            cont1++; /// contador menor
+            cont2++; /// contador geral
 
-        if (teste > 10){
-            vetor = new int[n+t];
-            for(j=0; j<n+t;j++){
-                vetor[j] = vetor[i];
-            }
-
-            n = n + 10;
-            teste = 0;// a cada nova expansão o vetor aumenta mais 10.
         }
-	}
 
 
-    cout << "\n\nvetor: " << endl;
-    for (i=0; i<cont; i++){    // impressão do vetor
-        cout<< vetor[i] <<endl;
+    do{
+         if (cont1 == 10){ ///se o contador menor marcar 10
+          n = n+10;
+          novovetor = new int [n]; /// aloca espaço para um novo vetor
+
+            for (i=0; i<n; i++) {  ///alteração
+                    if (i<n-10)/// se o indice do vetor antigo for menor que o indice do novo vetor apenas copia os valores
+                        novovetor[i] = vetor[i]; /// novo vetor recebe as entradas do vetor antigo
+                    else{
+                        cin>>num;
+                        if (num == 0){ ///para a entrada (teste antes de inserir no vetor)
+                            break;
+                        }
+                        novovetor[i] = num; ///inserindo valores no vetor;
+                        cont1++; /// contador menor
+                        cont2++; /// contador geral
+
+                    }
+            }
+         }
+         if(cont1 == 10)
+            delete []vetor;  /// liberando a memória do vetor antigo
+
+           vetor[i]=novovetor[i]; /// vetor "antigo" novo recebe os valores do vetor maior;
+
+          cont1 = 0;// zerando o contador menor
+
+
+    }while (num>0); //condição de parada
+
+    cout << "TAMANHO TOTAL DO VETOR "<< n<<endl;
+    cout << "VETOR: "<<endl;
+    if (cont2 <10){
+      for (i=0; i<cont2; i++)
+        cout << vetor[i] <<" "; ///impressão do vetor;
+        cout << endl;
+    }else{
+        cout<<"tamanho do vetor : "<<cont2<<endl;
+        for (i=0; i<cont2; i++)
+            cout << novovetor[i] << " "; ///impressão do vetor;
+        cout<<endl;
     }
+}
+*/
+
+/**
+/// RECEBE MAIS DE INFINITOS SÓ QUE NÃO RECONHECE NENHUMA CONDIÇÃO DE PARADA;
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+int main(){
+    int n = 10;
+    int *vetor;
+    int *novovetor;
+    int num;
+    int i, j;
+    int cont1 = 0, cont2 =0;
+
+    vetor = new int [n]; //alocando espaço para vetor
+    cout << "TAMANHO TOTAL DO VETOR "<< n<<endl;
+
+    cout << "Informe valores: "<<endl;
+
+    for (i=0; i<n; i++){
+            cin >> num;
+        if (num == 0) ///para a entrada (teste antes de inseriri no vetor)
+                    break;
+            vetor[i] = num; ///inserindo valores no vetor;
+            cont1++; /// contador menor
+            cont2++; /// contador geral
+        }
 
 
+    do{
 
+         if (cont1 == n){ ///se o contador menor marcar 10
+          n = n+10;
+
+          novovetor = new int [n]; /// aloca espaço para um novo vetor
+          cont1 = 0;/// zerando o contador menor
+
+            for (i=0; i<n; i++) {  ///alteração
+                    if (i<n-10)/// se o indice do vetor antigo for menor que o indice do novo vetor apenas copia os valores
+                        novovetor[i] = vetor[i]; /// novo vetor recebe as entradas do vetor antigo
+                    else{
+                        cin>>num; /// se não ele pede para o usuário inserir novos valores
+                        if (num == 0) ///para a entrada (teste antes de inserir no vetor)
+                            break;
+
+                        novovetor[i] = num; ///inserindo valores no vetor;
+                        cont1++; /// contador menor
+                        cont2++; /// contador geral
+                    }
+              }
+         }
+         if(cont1 == n)
+            delete []vetor;  /// liberando a memória do vetor antigo
+
+           vetor[i]=novovetor[i]; /// vetor "antigo" novo recebe os valores do vetor maior;
+
+
+    }while (i!=0); //condição de parada
+
+    cout << "TAMANHO TOTAL DO VETOR "<< n<<endl;
+    cout << "VETOR: "<<endl;
+    if (cont2 <10){
+      for (i=0; i<cont2; i++)
+        cout << vetor[i] <<" "; ///impressão do vetor;
+        cout << endl;
+    }else{
+        cout<<"tamanho do vetor : "<<cont2<<endl;
+        for (i=0; i<cont2; i++)
+            cout << novovetor[i] << " "; ///impressão do vetor;
+        cout<<endl;
+    }
 }
 
-
-
-
-
-
+*/
 
 /* 7. Faça um programa que leia do usuário o tamanho de um vetor a ser lido e faç̧a a
 alocação dinâmica de memória. Em seguida, leia do usuário seus valores e imprima o vetor
