@@ -3,15 +3,15 @@
 #include <cstdlib>
 
 using  namespace std;
-int horizontalNormal(char palavra[3][5]);
-int inverteMatriz(char palavra[3][5]);
-void colunaNormal(char palavra[3][5]);
-void colunaInvertida(char palavras[3][5]); /// NAO PRONTO
+int horizontalNormal(char palavra[3][3]);
+int inverteMatriz(char palavra[3][3]);
+void colunaNormal(char palavra[3][3]);
+void colunaInvertida(char palavras[3][3]); /// NAO PRONTO
 
 int main (){
     int i, j;
-    int lin = 3, col = 5;
-    char palavras[3][5];
+    int lin = 3, col = 3;
+    char palavras[3][3];
 
 
 
@@ -20,7 +20,7 @@ int main (){
     }
 
 
-    cout << "MATRIZ :"<<endl;
+    cout << "\n\nMATRIZ :"<<endl;
 
     for (i=0; i<lin; i++){
         for (j=0; j<col; j++){
@@ -31,14 +31,22 @@ int main (){
 
     horizontalNormal(palavras); /// funcao horizontal normal
     inverteMatriz(palavras); /// horizontal invertido
-    colunaNormal(palavras);
-    //colunaInvertida(palavras);
+    colunaNormal(palavras); /// transposta
+    colunaInvertida(palavras); ///transposta da horizontal invertida
+
+    cout << "\n\nMATRIZ FINAL MAIN " << endl;
+    for (i=0; i<lin; i++){
+        for (j=0; j<col; j++){
+            cout << palavras[i][j] << " "; /// imprimindo a matriz
+        }
+        cout << "\n";
+    }
 }
 
 
-int horizontalNormal(char palavras[3][5]){/// sentido
+int horizontalNormal(char palavras[3][3]){/// sentido
     int i;
-    int tam = 5;
+    int tam = 3;
     char word[tam], *p; /// palavra a ser procurada;
 
     cout << "palavra: ";
@@ -55,7 +63,7 @@ int horizontalNormal(char palavras[3][5]){/// sentido
 
 }
 
-int inverteMatriz(char palavras[3][5]){
+int inverteMatriz(char palavras[3][3]){ /// HORIZONTAL INVERTIDA
     int i, j;
     char aux;
 
@@ -68,11 +76,12 @@ int inverteMatriz(char palavras[3][5]){
         }
     }
 
-/**    for (i=0; i<3; i++){
+    cout << "\n\nINVERTIDA " <<endl;
+    for (i=0; i<3; i++){
         cout << palavras[i] << endl;
     }
-*/
-    cout << "matriz invertida " <<endl;
+
+
     horizontalNormal(palavras);
 
     /// desinverter de novo
@@ -87,22 +96,22 @@ int inverteMatriz(char palavras[3][5]){
     }
 }
 
-void colunaNormal(char palavras[3][5]){ ///
+void colunaNormal(char palavras[3][3]){ ///
     int i,j;
-    char matrizP[3][5];
+    char matrizP[3][3];
 
     for (i=0; i<3; i++){
-        for (j=0; j<5; j++){
-            matrizP[i][j] = palavras[i][j];
+        for (j=0; j<3; j++){
+            matrizP[i][j] = palavras[j][i]; /// AQUI
 
         }
     }
 
 
-    cout << "TRANSPOSTA: "<< endl;
-    for (i=0; i<5; i++){
+    cout << "\n\nTRANSPOSTA: "<< endl;
+    for (i=0; i<3; i++){
             for (j=0; j<3; j++){
-                 cout << matrizP[j][i] << " ";
+                 cout << matrizP[i][j] << " ";
 
             }
             cout << "\n";
@@ -110,7 +119,6 @@ void colunaNormal(char palavras[3][5]){ ///
 
 
     /// função HORIZONTAL NORMAL adaptada
-
 
 
     int tam = 3;
@@ -121,28 +129,66 @@ void colunaNormal(char palavras[3][5]){ ///
 
 
 
-    for (i=0; i<5; i++){
+    for (i=0; i<3; i++){
         p = strstr(matrizP[i],word);
         if (p!=NULL)
-            cout << "palavra encontrada na coluna " << i+1 <<endl;
+            cout << "palavra encontrada na coluna " << i+1 <<endl; /// na verdade ele só busca nas linhas;
     }
 
 
 }
 
-void colunaInvertida(char palavras[3][5]){
+void colunaInvertida(char palavras[3][3]){ /// FAZER A TRANSPOSTA DA HORIZONTAL INVERTIDA;
     int i,j;
-    int matriz[3][5];
+    int aux;
+    char matrizP[3][3];
+
+    for (i=0; i<3; i++){
+        for (j=0; j<3; j++){
+            matrizP[i][j] = palavras[j][i]; /// TROCANDO LINHAS POR COLUNAS
+        }
+    }
+
+    for(i=0; i<2 ; i++){
+        for(j=0; j<(strlen(matrizP[i])/2); j++){
+            aux = matrizP[i][j];
+            matrizP[i][j] = matrizP[i][strlen(matrizP[i])-j-1];  /// TROCANDO OS ELEMENTOS DE POSIÇAO
+            matrizP[i][strlen(matrizP[i])-j-1] = aux; /// ta invertendo a pos j=0 com j=2; não era pra acontecer
+
+        }
+    }
+
+    cout << "\n\nCOLUNA INVERTIDA: "<< endl;
+    for (i=0; i<2; i++){
+            for (j=0; j<3; j++){
+                 cout << matrizP[i][j] << " ";
+
+            }
+            cout << "\n";
+    }
+
+
 
 
 }
 
 /**
-5 -- void Diagonal_P_Normal(char palavras[3][5]);
-6 -- void Diagonal_P_Invertida(char palavras[3][5]);
-7 -- void Diagonal_S_Normal(char palavras[3][5]);
-8 -- void Diagonal_S_Invertida(char palavras[3][5]);
+5 -- void Diagonal_P_Normal(char palavras[3][3]);
+6 -- void Diagonal_P_Invertida(char palavras[3][3]);
+7 -- void Diagonal_S_Normal(char palavras[3][3]);
+8 -- void Diagonal_S_Invertida(char palavras[3][3]);
 */
+
+
+
+
+
+
+
+
+
+
+
 
 
 
