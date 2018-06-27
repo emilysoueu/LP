@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1525894968 source:c:\users\professor\desktop\matmul\matriz.cpp
+	<iostream>
+	"matriz.h"
+
+1525894751 source:c:\users\professor\desktop\matmul\main.cpp
+	<iostream>
+	"matriz.h"
+
+1525894852 c:\users\professor\desktop\matmul\matriz.h
+
