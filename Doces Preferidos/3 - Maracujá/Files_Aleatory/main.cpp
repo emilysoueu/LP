@@ -1,13 +1,13 @@
-/**Crie um programa de processamento de cr√©dito capaz de armazenar no m√°ximo 100 registros de largura fixa para uma empresa que
-pode ter at√© 100 clientes. Cada registro deve consistir em um n√∫mero de conta que atua como a chave de registro, um sobrenome,
-um nome e um saldo. O programa deve ser capaz de atualizar uma conta, inserir uma nova conta, excluir uma conta e inserir todos
-os registros de conta em um arquivo de texto formatado para impress√£o.*/
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <iomanip>
 #include "ClientData.h"
+
 using namespace std;
+
+void outputLine(ostream &output, const ClientData &record); //protÛtipo
+
 
 int main(){
 	int AccountNumber;
@@ -30,22 +30,22 @@ int main(){
 
     fstream outCredit_S("Credit.dat", ios :: in | ios :: out | ios :: binary);
 
-    // sai do progrmama se o fstream n√£o puder abrir o arquivo
+    // sai do progrmama se o fstream n„o puder abrir o arquivo
     	if (!outCredit_S){
     		cout << "Erro" << endl;
     	}
 
     cout << "Enter Account Number (1-100, 0 to end input)\n";
 
-    // requer que o usu√°rio especifique o numero da conta
+    // requer que o usu·rio especifique o numero da conta
 
     ClientData client;
     cin >> AccountNumber;
 
-	// O usu√°rio isere as informa√ß√µes que ser√£o copiadas para o arquivo
+	// O usu·rio isere as informaÁıes que ser„o copiadas para o arquivo
 
 	while (AccountNumber > 0 && AccountNumber <= 100){
-		// o usu√°rio insere Nome, sobrenome e o Saldo
+		// o usu·rio insere Nome, sobrenome e o Saldo
 		cout << "Enter LastName, FirstName, Balance: \n";
 		cin >> setw(15) >> LastName;
 		cin >> setw(10) >> FirstName;
@@ -58,22 +58,55 @@ int main(){
 		client.setFirstName(FirstName);
 		client.setBalance(Balance);
 
-		//Busca posi√ß√£o no arquivo de registro especificado pelo usu√°rio
+		//Busca posiÁ„o no arquivo de registro especificado pelo usu·rio
 
 		outCredit_S.seekp(client.getAccountNumber()-1*sizeof(ClientData));
 
-		//Grava informa√ß√µes especificadas pelo usu√°rio
+		//Grava informaÁıes especificadas pelo usu·rio
 
 		outCredit_S.write(reinterpret_cast <const char *> (&client), sizeof(ClientData));
 
-		//Permite o usu√°rio inserir outra conta
+		//Permite o usu·rio inserir outra conta
 
 		cout << "Enter Account Number\n";
 		cin >> AccountNumber;
 	}
 
+	ifstream  inCredit("credit.dat", ios :: in);
+
+	//fecha o programa se ifstream n„o puder abrir o arquivo
+	if (!inCredit){
+		cout << "Erro " << endl;
+		exit (1);
+	}
+
+	cout << left << setw(10) << " Account " << setw(16) << " Last Name " << setw(11) << " First Name "
+	<< setw(10) << right << " Balance " << endl;
+
+	//lÍ o primeiro acesso do registro do arquivo
+
+	inCredit.read(reinterpret_cast <char *> (&client), sizeof(ClientData));
+
+	//lÍ Todos os registros do arquivo
+
+	while (inCredit && !inCredit.eof()){
+		//exie o registro
+		if (client.getAccountNumber() != 0)
+			outputLine(cout, client);
+
+		// lÍ o prÛximo registro do arquivo
+		inCredit.read (reinterpret_cast <char *> (&client), sizeof(ClientData));
+	} // fim do while
+
 	return 0;
 
+}
+
+//exibe um ˙nico registro do arquivo
+void outputLine(ostream &output,  const ClientData &record){
+		output << left << setw(10) << record.getAccountNumber() <<setw(16) <<
+		record.getLastName() << setw(11) << record.getFirstName() << setw(10) <<
+		setprecision(2) << right << fixed << showpoint << record.getBalance () << endl;
 }
 
 
