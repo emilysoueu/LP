@@ -28,10 +28,10 @@ int main(){
     	for (int i=0; i<100; i++)
     		outCredit.write (reinterpret_cast <const char*> (&blankClient), sizeof(ClientData));
 
-    fstream outCredit("Credit.dat", ios :: in | ios :: out | ios :: binary);
+    fstream outCredit_S("Credit.dat", ios :: in | ios :: out | ios :: binary);
 
     // sai do progrmama se o fstream não puder abrir o arquivo
-    	if (!outCredit){
+    	if (!outCredit_S){
     		cout << "Erro" << endl;
     	}
 
@@ -60,11 +60,11 @@ int main(){
 
 		//Busca posição no arquivo de registro especificado pelo usuário
 
-		outCredit.seekp(client.getAccountNumber()-1*sizeof(ClientData));
+		outCredit_S.seekp(client.getAccountNumber()-1*sizeof(ClientData));
 
 		//Grava informações especificadas pelo usuário
 
-		outCredit.write(reinterpret_cast <const char *> (&client), sizeof(ClientData));
+		outCredit_S.write(reinterpret_cast <const char *> (&client), sizeof(ClientData));
 
 		//Permite o usuário inserir outra conta
 

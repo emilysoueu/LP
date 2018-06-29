@@ -1,13 +1,14 @@
 
 // Arquivo de Cabeçalho
 
-#ifndef  "CLIENTDATA_H"
-#define CLIENTDATA
+#ifndef  CLIENTDATA
+#define CLIENTDATA_H
 
 #include <string>
 using namespace std;
 
 class ClientData{
+    public:
 	//construtor CLIENTDATA padrão
 	ClientData(int i=0, string = "", string = "", double = 0.0 );
 
