@@ -35,7 +35,7 @@ void ClientData :: setLastName(string LastNameString){
 	const char* LastNameValue = LastNameString.data();
 	int length = LastNameString.size();
 
-  "
+ 
 
   
   if (length < 15){
