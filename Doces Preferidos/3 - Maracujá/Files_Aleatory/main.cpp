@@ -6,6 +6,8 @@
 #include "ClientData.h"
 using namespace std;
 
+void outputLine(ostream &output, const ClientData &record); //protótipo
+
 int main(){
 	int AccountNumber;
 	char LastName[15];
@@ -71,6 +73,41 @@ int main(){
 
 	return 0;
 
+ifstream  inCredit("credit.dat", ios :: in);
+
+	//fecha o programa se ifstream não puder abrir o arquivo
+	if (!inCredit){
+		cout << "Erro " << endl;
+		exit (1);
+	}
+
+	cout << left << setw(10) << " Account " << setw(16) << " Last Name " << setw(11) << " First Name "
+	<< setw(10) << right << " Balance " << endl;
+
+	//lê o primeiro acesso do registro do arquivo
+
+	inCredit.read(reinterpret_cast <char *> (&client), sizeof(ClientData));
+
+	//lê Todos os registros do arquivo
+
+	while (inCredit && !inCredit.eof()){
+		//exie o registro
+		if (client.getAccountNumber() != 0)
+			outputLine(cout, client);
+
+		// lê o próximo registro do arquivo
+		inCredit.read (reinterpret_cast <char *> (&client), sizeof(ClientData));
+	} // fim do while
+
+	return 0;
+
+}
+
+//exibe um único registro do arquivo
+void outputLine(ostream &output,  const ClientData &record){
+		output << left << setw(10) << record.getAccountNumber() <<setw(16) <<
+		record.getLastName() << setw(11) << record.getFirstName() << setw(10) <<
+		setprecision(2) << right << fixed << showpoint << record.getBalance () << endl;
 }
 
 
