@@ -1,7 +1,7 @@
 
 // Arquivo de Cabeçalho
 
-#ifndef  CLIENTDATA
+#ifndef  CLIENTDATA_H
 #define CLIENTDATA_H
 
 #include <string>
@@ -16,14 +16,26 @@ class ClientData{
 	void setAccountNumber (int);
 	int getAccountNumber () const;
 
-	//funções de acesso para LastName
+  /*==========Erros de sintax========== */
+
+  /*
+  * Provavelmente tu tava cansada de tanto olhar pra esse bando de letrinha
+  * miuda e colorida e não reparou que invés de 1 "Get" e 1 "Set"
+  * escreveu "Set" duas vezes. Isso rolava pakas comigo no java.
+  * Pretty much everyone mistake.
+  */
+
+  //funções de acesso para LastName
 	void setLastName(string);
-	string setLastName () const;
+	//string setLastName () const; //bug
+	string getLastName () const; //sem bug
 
 	//funções de acesso para FirstName
 	void setFirstName (string);
-	string setFirstName () const;
+	// string setFirstName () const; //bug
+	string getFirstName () const; //sem bug
 
+  /*========================================*/
 	//funções de acesso para balance
 	void setBalance(double);
 	double getBalance () const;
@@ -35,4 +47,4 @@ class ClientData{
 		double balance;
 };
 
-#endif;
+#endif
