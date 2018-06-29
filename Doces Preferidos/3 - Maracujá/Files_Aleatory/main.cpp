@@ -1,0 +1,89 @@
+/**Crie um programa de processamento de crédito capaz de armazenar no máximo 100 registros de largura fixa para uma empresa que
+pode ter até 100 clientes. Cada registro deve consistir em um número de conta que atua como a chave de registro, um sobrenome,
+um nome e um saldo. O programa deve ser capaz de atualizar uma conta, inserir uma nova conta, excluir uma conta e inserir todos
+os registros de conta em um arquivo de texto formatado para impressão.*/
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <iomanip>
+#include "ClientData.h"
+using namespace std;
+
+int main(){
+	int AccountNumber;
+	char LastName[15];
+	char FirstName[10];
+	double Balance;
+
+
+    ofstream outCredit("Credit.dat", ios :: binary);
+
+    if (!outCredit){
+    	cout << "Erro" << endl;
+    	exit (1);
+    }
+
+    ClientData blankClient; // construtor zera ou apaga cada menbro de dados
+    // gera a saida de 100 registros em branco no arquivo
+    	for (int i=0; i<100; i++)
+    		outCredit.write (reinterpret_cast <const char*> (&blankClient), sizeof(ClientData));
+
+    fstream outCredit("Credit.dat", ios :: in | ios :: out | ios :: binary);
+
+    // sai do progrmama se o fstream não puder abrir o arquivo
+    	if (!outCredit){
+    		cout << "Erro" << endl;
+    	}
+
+    cout << "Enter Account Number (1-100, 0 to end input)\n";
+
+    // requer que o usuário especifique o numero da conta
+
+    ClientData client;
+    cin >> AccountNumber;
+
+	// O usuário isere as informações que serão copiadas para o arquivo
+
+	while (AccountNumber > 0 && AccountNumber <= 100){
+		// o usuário insere Nome, sobrenome e o Saldo
+		cout << "Enter LastName, FirstName, Balance: \n";
+		cin >> setw(15) >> LastName;
+		cin >> setw(10) >> FirstName;
+		cin >> Balance;
+
+		// configura os valores de  Account Number, Last Name e First Name
+
+		client.setAccountNumber(AccountNumber);
+		client.setLastName(LastName);
+		client.setFirstName(FirstName);
+		client.setBalance(Balance);
+
+		//Busca posição no arquivo de registro especificado pelo usuário
+
+		outCredit.seekp(client.getAccountNumber()-1*sizeof(ClientData));
+
+		//Grava informações especificadas pelo usuário
+
+		outCredit.write(reinterpret_cast <const char *> (&client), sizeof(ClientData));
+
+		//Permite o usuário inserir outra conta
+
+		cout << "Enter Account Number\n";
+		cin >> AccountNumber;
+	}
+
+	return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
