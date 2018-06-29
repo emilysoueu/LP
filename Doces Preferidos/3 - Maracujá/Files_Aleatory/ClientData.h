@@ -38,6 +38,9 @@ class ClientData{
 		char LastName[15];
 		char FirstName[10];
 		double balance;
+	
+	// função de acesso para pesquisa de conta
+	void outputLine( ostream&, const ClientData & ); // protótipo
 };
 
 #endif
