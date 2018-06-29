@@ -1,0 +1,5 @@
+Crie um programa de processamento de crédito capaz de armazenar no máximo 100 registros de largura fixa para uma empresa que
+pode ter até 100 clientes. Cada registro deve consistir em um número de conta que atua como a chave de registro, um sobrenome,
+um nome e um saldo. O programa deve ser capaz de atualizar uma conta, inserir uma nova conta, excluir uma conta e inserir todos
+os registros de conta em um arquivo de texto formatado para impressão.*/
+#include <iostream>
