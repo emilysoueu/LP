@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1524453261 source:c:\users\public\documents\computação\2 º período\linguagem de programação\linguagem_de_programacao\desafios lp\tarefa strings\main.cpp
+	<stdio.h>
+	<iostream>
+	<conio.h>
+

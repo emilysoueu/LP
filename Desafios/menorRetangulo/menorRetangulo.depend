@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1528918882 source:c:\users\public\documents\computação\2 º período\linguagem de programação\atv-e-desafios---lp\desafios lp\menorretangulo\main.cpp
+	<iostream>
+	<cstdlib>
+
