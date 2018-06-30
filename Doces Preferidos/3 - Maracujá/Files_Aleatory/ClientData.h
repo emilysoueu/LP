@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+
+// Arquivo de CabeÃ§alho
+
+>>>>>>> master
 #ifndef  CLIENTDATA_H
 #define CLIENTDATA_H
 
@@ -13,6 +19,7 @@ class ClientData{
 	void setAccountNumber (int);
 	int getAccountNumber () const;
 
+<<<<<<< HEAD
   /*==========Erros de sintax========== */
 
   /*
@@ -23,6 +30,11 @@ class ClientData{
   */
 
   //funções de acesso para LastName
+=======
+  
+
+  //funÃ§Ãµes de acesso para LastName
+>>>>>>> master
 	void setLastName(string);
 	//string setLastName () const; //bug
 	string getLastName () const; //sem bug
@@ -32,8 +44,13 @@ class ClientData{
 	// string setFirstName () const; //bug
 	string getFirstName () const; //sem bug
 
+<<<<<<< HEAD
   /*========================================*/
 	//funções de acesso para balance
+=======
+ 
+	//funÃ§Ãµes de acesso para balance
+>>>>>>> master
 	void setBalance(double);
 	double getBalance () const;
 
@@ -42,6 +59,7 @@ class ClientData{
 		char LastName[15];
 		char FirstName[10];
 		double balance;
+<<<<<<< HEAD
 
 
     void outputLine( ostream&, const ClientData & ); // protótipo
@@ -50,3 +68,11 @@ class ClientData{
 #endif
 
 
+=======
+	
+	// funÃ§Ã£o de acesso para pesquisa de conta
+	void outputLine( ostream&, const ClientData & ); // protÃ³tipo
+};
+
+#endif
+>>>>>>> master
