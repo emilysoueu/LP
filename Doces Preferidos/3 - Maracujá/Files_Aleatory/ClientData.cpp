@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//construtor ClientData padr„o
+//construtor ClientData padr√£o
 
 ClientData :: ClientData(int AccountNumberValue, string LastNameValue, string FirstNameValue, double BalanceValue){
 	setAccountNumber(AccountNumberValue);
@@ -23,10 +23,10 @@ void ClientData :: setAccountNumber(int AccountNumberValue){
 	AccountNumber = AccountNumberValue;
 }
 /*==================================================*/
-// Aqui, a funÁ„o tava retornando Inteiro, mas a declraÁ„o l· no ClientData.h T·
+// Aqui, a fun√ß√£o tava retornando Inteiro, mas a declra√ß√£o l√° no ClientData.h T√°
 // Dizendo que ele retorna String.
 
-// Vers„o antiga
+// Vers√£o antiga
 // int ClientData :: getLastName () const{
 // 	return LastName;
 // }
@@ -37,23 +37,16 @@ string ClientData :: getLastName () const{
 }
 /*==================================================*/
 
-
 //configurar o valor do LastName
 void ClientData :: setLastName(string LastNameString){
-	//copia no m·ximo 15 caracteres da string para LastName
+	//copia no m√°ximo 15 caracteres da string para LastName
 	const char* LastNameValue = LastNameString.data();
 	int length = LastNameString.size();
 
-<<<<<<< HEAD
-  // 1x MDS N√O USA OPERADOR TERN¡RIO EM NOME DE G-ZUIS Hueahueuhuea
-	//length = (length < 15 ? length :: 14); //O erro È que era sÛ ":" e n„o "::"
+  // 1x MDS N√ÉO USA OPERADOR TERN√ÅRIO EM NOME DE G-ZUIS Hueahueuhuea
+	//length = (length < 15 ? length :: 14); //O erro √© que era s√≥ ":" e n√£o "::"
 
-  //If È coisa de gente, vlw flw.
-=======
- 
-
-  
->>>>>>> master
+  //If √© coisa de gente, vlw flw.
   if (length < 15){
     length = length;
   }else{
@@ -64,20 +57,16 @@ void ClientData :: setLastName(string LastNameString){
 	LastName[length] = '\0';// acrescenta caractere nulo ao sobrenome
 }
 
-<<<<<<< HEAD
 /*==================================================*/
-// Aqui tu botou o "s" sem querer depois do "t" e invÈs de antes. (FirstName)
-//E tambÈm a funÁ„o tava retornando Inteiro, mas a declraÁ„o l· no ClientData.h T·
+// Aqui tu botou o "s" sem querer depois do "t" e inv√©s de antes. (FirstName)
+//E tamb√©m a fun√ß√£o tava retornando Inteiro, mas a declra√ß√£o l√° no ClientData.h T√°
 // Dizendo que ele retorna String.
 
 
-// Vers„o antiga
+// Vers√£o antiga
 // int ClientData :: getFirtsName () const{
 // 	return FirstName;
 // }
-=======
-/
->>>>>>> master
 
 // obtem o valor do FirstName
 string ClientData :: getFirstName () const{
@@ -85,28 +74,23 @@ string ClientData :: getFirstName () const{
 }
 /*==================================================*/
 
-
 //configurar o valor do FirstName
 void ClientData :: setFirstName(string FirstNameString){
-	//copia no m·ximo 10 caracteres da string para LastName
+	//copia no m√°ximo 10 caracteres da string para LastName
 	const char*FirstNameValue = FirstNameString.data();
 	int length =FirstNameString.size();
 
-<<<<<<< HEAD
-  // 2x MDS N√O USA OPERADOR TERN¡RIO EM NOME DE G-ZUIS Hueahueuhuea
-  // Mesma mutreta do outro de cima. era ":" invÈs de "::"
-  // mas como vocÍ È uma menina amorzinho, EU TENHO CERTEZA que n„o vai mais usar
-  // operador tern·rio. u.u
+  // 2x MDS N√ÉO USA OPERADOR TERN√ÅRIO EM NOME DE G-ZUIS Hueahueuhuea
+  // Mesma mutreta do outro de cima. era ":" inv√©s de "::"
+  // mas como voc√™ √© uma menina amorzinho, EU TENHO CERTEZA que n√£o vai mais usar
+  // operador tern√°rio. u.u
 
   //length = (length < 10 ? length :: 9);//como tava
   //length = (length < 10 ? length : 9); // o jeito """"""""""certo""""""""""
 
-  // Agora tirando a zoeira. O if È mais legÌvel. Antigamente todos os livros
-  // usavam operador tern·rio, era uma mania mesmo. Mas j· caiu em desuso.
-  // AÌ toda vez que tu ver operador tern·rio, tu sÛ troca por um if bonitinho.
-=======
-  
->>>>>>> master
+  // Agora tirando a zoeira. O if √© mais leg√≠vel. Antigamente todos os livros
+  // usavam operador tern√°rio, era uma mania mesmo. Mas j√° caiu em desuso.
+  // A√≠ toda vez que tu ver operador tern√°rio, tu s√≥ troca por um if bonitinho.
   if (length < 10){
     length = length;
   }else{
@@ -119,30 +103,21 @@ void ClientData :: setFirstName(string FirstNameString){
 
 //obtem o valor do saldo
 double ClientData :: getBalance () const{
-<<<<<<< HEAD
-  // Aqui t· retornando Balance com "B" maiusculo
-  // L· no ClientData.h t· escrito com "b" minusculo
-  // Vers„o antiga:
+  // Aqui t√° retornando Balance com "B" maiusculo
+  // L√° no ClientData.h t√° escrito com "b" minusculo
+  // Vers√£o antiga:
 	// return Balance;
 
-=======
-  
->>>>>>> master
 	return balance;
 }
 
 //configura o valor do saldo
 
 void ClientData :: setBalance(double BalanceValue){
-<<<<<<< HEAD
-  // Aqui t· "setando" Balance com "B" maiusculo
-  // L· no ClientData.h t· escrito com "b" minusculo
-  // Vers„o antiga:
+  // Aqui t√° "setando" Balance com "B" maiusculo
+  // L√° no ClientData.h t√° escrito com "b" minusculo
+  // Vers√£o antiga:
 	// Balance = BalanceValue;
-=======
-  /
->>>>>>> master
 	balance = BalanceValue;
 }
-
 
