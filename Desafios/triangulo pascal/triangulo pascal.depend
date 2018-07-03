@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1523666561 source:c:\users\samuel\desktop\programs - c\triangulo pascal\main.cpp
+	<iostream>
+	<stdlib.h>
+	<iostream>
+
