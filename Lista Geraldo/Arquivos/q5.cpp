@@ -13,8 +13,9 @@ using namespace std;
 
 int main (){
     int i, lines = 0;
-    char *drake;
-    char *josh;
+    char drake;
+    char josh;
+    int same;
 
     ifstream leituraD;
              leituraD.open("A.txt", ios :: in);
@@ -35,11 +36,12 @@ int main (){
     while (!leituraJ.eof()){
         leituraD.getline(drake,'\n');
         leituraJ.getline(josh, '\n');
-        lines++;
-        if (drake == josh){
+
+        if ((same = strcmp(drake,josh) == 0){
             cout << "Linha " << lines << " igual"<<endl;
 
         }
+        lines++;
     }
 
 }

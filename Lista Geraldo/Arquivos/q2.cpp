@@ -11,11 +11,12 @@
 using namespace std;
 
 int main (){
-    char omelete;
+    char omelete[20];
     int lines = 0;
+    FILE  *master;
 
     ifstream original;
-             original.open("A.txt", ios :: in);
+            master = original.open("A.txt", ios :: in);
 
     if (!original.is_open()){
         cout << "ERRO"<<endl;
@@ -27,12 +28,16 @@ int main (){
              mundoInvertido.open("C.txt", ios :: app);
 
 
+    fseek(master,sizeof(master),SEEK_END));
+    while(!original.seekg(0, original.beg)){
+            original.getline(omelete,20);
+            mundoInvertido << omelete;
 
-    while (!original.eof()){
-        original.get(omelete);
-        mundoInvertido << omelete;
-        mundoInvertido.seekp(0);
     }
+
+
+
+
        original.close();
        mundoInvertido.close();
 

@@ -108,7 +108,7 @@ using namespace std;
 
 int main(){
     char User[1000];
-    char adm[1000];
+    char  adm[1000];
 
     ofstream saida;
 
