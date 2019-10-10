@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 
 >>>>>>> master
 #include <iostream>
@@ -11,10 +10,10 @@
 using namespace std;
 
 <<<<<<< HEAD
-void outputLine(ostream &output, const ClientData &record); //protótipo
+void outputLine(ostream &output, const ClientData &record); //protÃ³tipo
 
 =======
-void outputLine(ostream &output, const ClientData &record); //protÃ³tipo
+void outputLine(ostream &output, const ClientData &record); //protÃƒÂ³tipo
 >>>>>>> master
 
 int main(){
@@ -38,22 +37,22 @@ int main(){
 
     fstream outCredit_S("Credit.dat", ios :: in | ios :: out | ios :: binary);
 
-    // sai do progrmama se o fstream não puder abrir o arquivo
+    // sai do progrmama se o fstream nÃ£o puder abrir o arquivo
     	if (!outCredit_S){
     		cout << "Erro" << endl;
     	}
 
     cout << "Enter Account Number (1-100, 0 to end input)\n";
 
-    // requer que o usuário especifique o numero da conta
+    // requer que o usuÃ¡rio especifique o numero da conta
 
     ClientData client;
     cin >> AccountNumber;
 
-	// O usuário isere as informações que serão copiadas para o arquivo
+	// O usuÃ¡rio isere as informaÃ§Ãµes que serÃ£o copiadas para o arquivo
 
 	while (AccountNumber > 0 && AccountNumber <= 100){
-		// o usuário insere Nome, sobrenome e o Saldo
+		// o usuÃ¡rio insere Nome, sobrenome e o Saldo
 		cout << "Enter LastName, FirstName, Balance: \n";
 		cin >> setw(15) >> LastName;
 		cin >> setw(10) >> FirstName;
@@ -66,49 +65,21 @@ int main(){
 		client.setFirstName(FirstName);
 		client.setBalance(Balance);
 
-		//Busca posição no arquivo de registro especificado pelo usuário
+		//Busca posiÃ§Ã£o no arquivo de registro especificado pelo usuÃ¡rio
 
 		outCredit_S.seekp(client.getAccountNumber()-1*sizeof(ClientData));
 
-		//Grava informações especificadas pelo usuário
+		//Grava informaÃ§Ãµes especificadas pelo usuÃ¡rio
 
 		outCredit_S.write(reinterpret_cast <const char *> (&client), sizeof(ClientData));
 
-		//Permite o usuário inserir outra conta
+		//Permite o usuÃ¡rio inserir outra conta
 
 		cout << "Enter Account Number\n";
 		cin >> AccountNumber;
 	}
 
 	ifstream  inCredit("credit.dat", ios :: in);
-
-	//fecha o programa se ifstream não puder abrir o arquivo
-	if (!inCredit){
-		cout << "Erro " << endl;
-		exit (1);
-	}
-
-	cout << left << setw(10) << " Account " << setw(16) << " Last Name " << setw(11) << " First Name "
-	<< setw(10) << right << " Balance " << endl;
-
-	//lê o primeiro acesso do registro do arquivo
-
-	inCredit.read(reinterpret_cast <char *> (&client), sizeof(ClientData));
-
-	//lê Todos os registros do arquivo
-
-	while (inCredit && !inCredit.eof()){
-		//exie o registro
-		if (client.getAccountNumber() != 0)
-			outputLine(cout, client);
-
-		// lê o próximo registro do arquivo
-		inCredit.read (reinterpret_cast <char *> (&client), sizeof(ClientData));
-	} // fim do while
-
-	return 0;
-
-ifstream  inCredit("credit.dat", ios :: in);
 
 	//fecha o programa se ifstream nÃ£o puder abrir o arquivo
 	if (!inCredit){
@@ -136,16 +107,44 @@ ifstream  inCredit("credit.dat", ios :: in);
 
 	return 0;
 
+ifstream  inCredit("credit.dat", ios :: in);
+
+	//fecha o programa se ifstream nÃƒÂ£o puder abrir o arquivo
+	if (!inCredit){
+		cout << "Erro " << endl;
+		exit (1);
+	}
+
+	cout << left << setw(10) << " Account " << setw(16) << " Last Name " << setw(11) << " First Name "
+	<< setw(10) << right << " Balance " << endl;
+
+	//lÃƒÂª o primeiro acesso do registro do arquivo
+
+	inCredit.read(reinterpret_cast <char *> (&client), sizeof(ClientData));
+
+	//lÃƒÂª Todos os registros do arquivo
+
+	while (inCredit && !inCredit.eof()){
+		//exie o registro
+		if (client.getAccountNumber() != 0)
+			outputLine(cout, client);
+
+		// lÃƒÂª o prÃƒÂ³ximo registro do arquivo
+		inCredit.read (reinterpret_cast <char *> (&client), sizeof(ClientData));
+	} // fim do while
+
+	return 0;
+
 }
 
-//exibe um Ãºnico registro do arquivo
+//exibe um ÃƒÂºnico registro do arquivo
 void outputLine(ostream &output,  const ClientData &record){
 		output << left << setw(10) << record.getAccountNumber() <<setw(16) <<
 		record.getLastName() << setw(11) << record.getFirstName() << setw(10) <<
 		setprecision(2) << right << fixed << showpoint << record.getBalance () << endl;
 }
 
-//exibe um único registro do arquivo
+//exibe um Ãºnico registro do arquivo
 void outputLine(ostream &output,  const ClientData &record){
 		output << left << setw(10) << record.getAccountNumber() <<setw(16) <<
 		record.getLastName() << setw(11) << record.getFirstName() << setw(10) <<
